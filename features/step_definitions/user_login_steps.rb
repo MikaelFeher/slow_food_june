@@ -16,11 +16,6 @@ Then(/^I should be on the login page$/) do
   expect(page.current_path).to eq '/auth/login'
 end
 
-# Given(/^I am not logged in$/) do
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
-
-
 Given(/^I am on the login page$/) do
   visit '/auth/login'
 end
@@ -32,11 +27,10 @@ end
 Given(/^I click on "([^"]*)"$/) do |button|
   click_link_or_button button
 end
+
 Then(/^show me the page$/) do
   save_and_open_page
 end
-
-
 
 Then(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
