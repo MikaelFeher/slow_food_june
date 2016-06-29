@@ -7,3 +7,4 @@ Scenario: Navigate to dish display page
   Given I am on the home page
   And I click "Menu"
   Then I should be on the dish display page
+  And I should see "Make a selection from our mouth watering dishes"
