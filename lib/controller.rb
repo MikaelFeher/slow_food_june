@@ -58,7 +58,7 @@ class SlowFood < Sinatra::Base
 
   post '/account_creation' do
     begin
-      if params[:user][:password].empty? || params[:user][:usename].exist?
+      if params[:user][:password].empty?
         raise
       else
         User.create(params[:user])

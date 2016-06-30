@@ -2,6 +2,9 @@ Feature: As a user
   To be able to place an order
   I need to be able to create an account
 
+Background:
+  Given no users exist
+
 Scenario: Access account creation page
   Given I am on the home page
   And I click "Create Account"
@@ -30,8 +33,9 @@ Scenario: Reject registation on empty password field
   Then I should see "Account could not be created"
 
 Scenario: Reject registation if username already exists
+  Given the is a user with username "admin2" and password "admin"
   Given I am on the account creation page
-  And I fill in "Username" with "admin"
+  And I fill in "Username" with "admin2"
   And I fill in "Password" with "admin"
   And I click on "Create"
   Then I should see "Account could not be created"
