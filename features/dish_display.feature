@@ -21,3 +21,4 @@ Feature: As a user
     Then I should see "Pizza"
     Then I should see "Hamburger"
     Then I should see "Kebab"
+    Then show me the page

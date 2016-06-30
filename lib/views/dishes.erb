@@ -1,1 +1,8 @@
 <h1>Make a selection from our mouth watering dishes</h1>
+<ul>
+  <% @dishes.each do |dish| %>
+  <li>
+    <%= dish.name %>
+  </li>
+  <% end %>
+</ul>

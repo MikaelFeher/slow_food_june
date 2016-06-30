@@ -49,6 +49,7 @@ class SlowFood < Sinatra::Base
   end
 
   get '/dishes' do
+    @dishes = Dish.all
     erb :dishes
   end
 
