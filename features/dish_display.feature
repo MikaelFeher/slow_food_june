@@ -21,3 +21,8 @@ Feature: As a user
     Then I should see "Pizza"
     Then I should see "Hamburger"
     Then I should see "Kebab"
+
+  Scenario: No dishes to display
+    Given there are no dishes in the system
+    And I am on the dish display page
+    Then I should see "There are no dishes to display"
