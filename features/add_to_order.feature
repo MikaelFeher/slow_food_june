@@ -12,7 +12,6 @@ Feature: As a visitor
       | Pizza     | 50    | A great italian pan pizza |
       | Hamburger | 40    | Tasty burger              |
 
-
   Scenario: Add a dish to order
     Given I am logged in as "Thomas" with password "password"
     And I click "Menu"
@@ -23,8 +22,8 @@ Feature: As a visitor
     Then "Hamburger" should be added to "Thomas"'s order
     Then I should see "Hamburger has been added to your order"
 
-Scenario: Trying to add dish to order without being logged in
-  Given no users exist
-  And I am on the dish display page
-  And I click on "Add to order" for "Pizza"
-  Then I should see "You have to log in to be able to do that"
+  Scenario: Trying to add dish to order without being logged in
+    Given no users exist
+    And I am on the dish display page
+    And I click on "Add to order" for "Pizza"
+    Then I should see "You have to log in to be able to do that"
