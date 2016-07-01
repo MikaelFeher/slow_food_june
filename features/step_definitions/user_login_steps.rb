@@ -41,7 +41,4 @@ end
 
 Then(/^I should be on the home page$/) do
   expect(page.current_path).to eq '/'
-  if current_user
-    @current_user = current_user
-  end
 end
