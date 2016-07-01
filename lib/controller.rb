@@ -107,15 +107,20 @@ class SlowFood < Sinatra::Base
   end
 
   post '/add_to_order' do
-    dish = Dish.first(id: params[:item])
-    if session[:order_id]
-      order = Order.get(session[:order_id])
+    if current_user.nil?
+      flash[:error] = "You have to log in to be able to do that"
     else
-      order = Order.create(user: current_user)
-      session[:order_id] = order.id
+    dish = Dish.first(id: params[:item])
+      if session[:order_id]
+        order = Order.get(session[:order_id])
+      else
+        order = Order.create(user: current_user)
+        session[:order_id] = order.id
+      end
+      OrderItem.create(order: order, dish: dish)
+      flash[:success] = "#{dish.name} has been added to your order"
+      redirect '/dishes'
     end
-    OrderItem.create(order: order, dish: dish)
-    redirect '/dishes'
-  end
 
+  end
 end

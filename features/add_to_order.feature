@@ -18,5 +18,13 @@ Feature: As a visitor
     And I click "Menu"
     And I click on "Add to order" for "Pizza"
     Then "Pizza" should be added to "Thomas"'s order
+    Then I should see "Pizza has been added to your order"
     And I click on "Add to order" for "Hamburger"
     Then "Hamburger" should be added to "Thomas"'s order
+    Then I should see "Hamburger has been added to your order"
+
+Scenario: Trying to add dish to order without being logged in
+  Given no users exist
+  And I am on the dish display page
+  And I click on "Add to order" for "Pizza"
+  Then I should see "You have to log in to be able to do that"
