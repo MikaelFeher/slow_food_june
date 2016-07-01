@@ -1,6 +1,9 @@
 Given(/^the following users exist$/) do |table|
   table.hashes.each do |user|
-    User.create(username: user[:username], password: user[:password])
+    User.create(username: user[:username],
+                password: user[:password],
+                admin: user[:admin] || false)
+
   end
 end
 
@@ -38,4 +41,7 @@ end
 
 Then(/^I should be on the home page$/) do
   expect(page.current_path).to eq '/'
+  if current_user
+    @current_user = current_user
+  end
 end
