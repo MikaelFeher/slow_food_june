@@ -18,3 +18,5 @@ Feature: As a visitor
     And I click "Menu"
     And I click on "Add to order" for "Pizza"
     Then "Pizza" should be added to "Thomas"'s order
+    And I click on "Add to order" for "Hamburger"
+    Then "Hamburger" should be added to "Thomas"'s order

@@ -108,7 +108,12 @@ class SlowFood < Sinatra::Base
 
   post '/add_to_order' do
     dish = Dish.first(id: params[:item])
-    order = Order.create(user: current_user)
+    if session[:order_id]
+      order = Order.get(session[:order_id])
+    else
+      order = Order.create(user: current_user)
+      session[:order_id] = order.id
+    end
     OrderItem.create(order: order, dish: dish)
     redirect '/dishes'
   end
