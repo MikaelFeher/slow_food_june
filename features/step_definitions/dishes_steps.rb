@@ -25,6 +25,9 @@ Given(/^I click on "([^"]*)" for "([^"]*)"$/) do |link, dish|
   end
 end
 
-Then(/^"([^"]*)" should be added to "([^"]*)"'s order$/) do |arg1, arg2|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^"([^"]*)" should be added to "([^"]*)"'s order$/) do |dish_name, user_name|
+  dish = Dish.first(name: dish_name)
+  user = User.first(username: user_name)
+  item = user.orders.last.order_items.detect {|item| item.dish.name == dish_name}
+  expect(item.dish.name).to eq dish.name
 end

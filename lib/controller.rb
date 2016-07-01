@@ -108,14 +108,9 @@ class SlowFood < Sinatra::Base
 
   post '/add_to_order' do
     dish = Dish.first(id: params[:item])
-    # Create an Order
-    binding.pry
     order = Order.create(user: current_user)
-    #binding.pry
-    # Add @dish to Order as OrderItem
     OrderItem.create(order: order, dish: dish)
-    #binding.pry
-    # Render dish display page again
+    redirect '/dishes'
   end
 
 end
